@@ -2,9 +2,10 @@ from django.db import models
 
 
 # Create your models here.
+# https://books.agiliq.com/projects/django-orm-cookbook/en/latest/self_fk.html
 class PokemonSpecie(models.Model):
     pokemon_name = models.CharField(max_length=250, blank='False')
-    pokemon_type = models.ManyToManyField('PokemonType', blank='False')
+    pokemon_type = models.ForeignKey('PokemonType', on_delete=models.CASCADE, null=True)
     evolution_level = models.PositiveIntegerField(null=True)
     next_evolution = models.CharField(max_length=200, null=True)
 
